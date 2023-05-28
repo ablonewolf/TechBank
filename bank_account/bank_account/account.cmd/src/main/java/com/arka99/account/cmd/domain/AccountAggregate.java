@@ -28,7 +28,7 @@ public class AccountAggregate extends AggregateRoot {
     public void apply(AccountOpenedEvent event) {
         this.id = event.getId();
         this.active = true;
-        this.balance = event.getOpeningBalance();
+        this.balance += event.getOpeningBalance();
     }
 
     public void depositFunds(double amount) {
