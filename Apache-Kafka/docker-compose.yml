@@ -13,7 +13,7 @@ services:
   kafka:
     image: bitnami/kafka
     ports:
-      - "9092:9092"
+      - "8292:8292"
     restart: always
     volumes:
       - "kafka_data:/bitnami"
