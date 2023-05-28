@@ -39,3 +39,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### change to docker files ###
+docker-installation-commands-mysql-mongo.txt
