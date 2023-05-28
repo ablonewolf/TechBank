@@ -1,0 +1,22 @@
+CQRS:
+    - stands for Command Query Responsibility Segregation
+    - it is a software design pattern.
+    - it suggests that an application should be divided into two parts: Command & Query.
+    - Command part should alter the state of object or entity.
+    - Query part should return the state of object or entity.
+
+Why use CQRS:
+    - data is often more frequently queried than altered, or vice versa.
+    - segregating commands and queries enables us to optimise each for high performance.
+    - read and write representations of data often differ substantially.
+    - executing command and query operation on the same model can cause data contention.
+    - segregating read and write concerns enables us to manage read and write security separately.
+
+Event Sourcing:
+    - defines an approach to store the changes made to an object or entity as a sequence of immutable events as opposed to save the current state of the object or entity.
+
+Benefits of Event-Sourcing:
+    - event store provides a complete log of every state change.
+    - the state of an object/aggregate can be recreated by replaying the event store.
+    - improves write performance. All event types are simply appended to the event store. There are no update or delete operations.
+    - In the case of failure, the event store can be used to restore read database.
