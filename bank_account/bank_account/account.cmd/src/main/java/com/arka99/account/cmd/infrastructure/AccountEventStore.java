@@ -7,6 +7,7 @@ import com.arka99.cqrs.core.events.BaseEvent;
 import com.arka99.cqrs.core.exceptions.AggregateNotFoundException;
 import com.arka99.cqrs.core.exceptions.ConcurrencyException;
 import com.arka99.cqrs.core.infrastructure.EventStore;
+import com.arka99.cqrs.core.producers.EventProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class AccountEventStore implements EventStore {
+
+    @Autowired
+    private EventProducer eventProducer;
 
     @Autowired
     private EventStoreRepository eventStoreRepository;
@@ -40,8 +44,8 @@ public class AccountEventStore implements EventStore {
                     .eventData(event)
                     .build();
             var persistedEvent = eventStoreRepository.save(eventModel);
-            if (persistedEvent == null) {
-//                toDo: produce event to Kafka
+            if (!persistedEvent.getId().isEmpty()) {
+                eventProducer.produce(event.getClass().getSimpleName(), event);
             }
         }
     }
