@@ -15,7 +15,7 @@ public class AccountEventHandler implements EventHandler {
     private AccountRepository accountRepository;
 
     @Override
-    public void on(AccountOpenedEvent openedEvent) {
+    public void handle(AccountOpenedEvent openedEvent) {
         var bankAccount = BankAccount.builder()
                 .id(openedEvent.getId())
                 .accountHolder(openedEvent.getAccountHolder())
@@ -27,7 +27,7 @@ public class AccountEventHandler implements EventHandler {
     }
 
     @Override
-    public void on(FundsDepositedEvent depositedEvent) {
+    public void handle(FundsDepositedEvent depositedEvent) {
         var bankAccount = accountRepository.findById(depositedEvent.getId());
         if (bankAccount.isEmpty()) {
             return;
@@ -39,7 +39,7 @@ public class AccountEventHandler implements EventHandler {
     }
 
     @Override
-    public void on(FundsWithdrawnEvent withdrawnEvent) {
+    public void handle(FundsWithdrawnEvent withdrawnEvent) {
         var bankAccount = accountRepository.findById(withdrawnEvent.getId());
         if (bankAccount.isEmpty()) {
             return;
@@ -51,7 +51,7 @@ public class AccountEventHandler implements EventHandler {
     }
 
     @Override
-    public void on(AccountClosedEvent closedEvent) {
+    public void handle(AccountClosedEvent closedEvent) {
         accountRepository.deleteById(closedEvent.getId());
     }
 }

@@ -6,8 +6,8 @@ import com.arka99.account.common.events.FundsDepositedEvent;
 import com.arka99.account.common.events.FundsWithdrawnEvent;
 
 public interface EventHandler {
-    void on(AccountOpenedEvent openedEvent);
-    void on(FundsDepositedEvent depositedEvent);
-    void on(FundsWithdrawnEvent withdrawnEvent);
-    void on(AccountClosedEvent closedEvent);
+    void handle(AccountOpenedEvent openedEvent);
+    void handle(FundsDepositedEvent depositedEvent);
+    void handle(FundsWithdrawnEvent withdrawnEvent);
+    void handle(AccountClosedEvent closedEvent);
 }
