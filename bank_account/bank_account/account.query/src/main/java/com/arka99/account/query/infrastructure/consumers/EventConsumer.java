@@ -12,7 +12,7 @@ public interface EventConsumer {
 
     void consume(@Payload FundsDepositedEvent depositedEvent, Acknowledgment acknowledgment);
 
-    void consume(@Payload FundsWithdrawnEvent fundsWithdrawnEvent, Acknowledgment acknowledgment);
+    void consume(@Payload FundsWithdrawnEvent withdrawnEvent, Acknowledgment acknowledgment);
 
     void consume(@Payload AccountClosedEvent closedEvent, Acknowledgment acknowledgment);
 }
