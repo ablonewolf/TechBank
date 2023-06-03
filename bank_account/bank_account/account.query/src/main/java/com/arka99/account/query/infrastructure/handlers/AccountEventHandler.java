@@ -6,7 +6,6 @@ import com.arka99.account.common.events.FundsDepositedEvent;
 import com.arka99.account.common.events.FundsWithdrawnEvent;
 import com.arka99.account.query.domain.AccountRepository;
 import com.arka99.account.query.domain.BankAccount;
-import com.arka99.cqrs.core.infrastructure.EventStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
