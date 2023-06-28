@@ -1,0 +1,11 @@
+
+
+Install MySQL on Docker: sudo docker run -it -d --name mysql-container -p 3307:3306 --network techBankNet -e MYSQL_ROOT_PASSWORD=root --restart always -v mysql_data_container:/var/lib/mysql mysql:latest
+
+
+Install MongoDB on Docker: sudo docker run -it -d --name mongo-container -p 27017:27017 --network techBankNet --restart always -v mongodb_data_container:/data/db mongo:latest
+
+
+Start Mongo from command line: sudo docker exec -it mongo-container mongosh
+
+Start MySQL from command line: sudo docker exec -it mysql-container mysql -p
